@@ -8,16 +8,21 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { formatPrice } from "@/lib/format";
 import { CTAButton } from "@/components/CTAButton";
 
-const getDefaultModality = (item: CatalogItem) => {
+type Modality = "Presencial" | "Videollamada";
+
+const getDefaultModality = (item: CatalogItem): Modality => {
   if (item.modality === "Presencial y videollamada") {
     return "Presencial";
   }
-  return item.modality ?? "Presencial";
+  if (item.modality === "Videollamada") {
+    return "Videollamada";
+  }
+  return "Presencial";
 };
 
 export function ProductDetailClient({ item }: { item: CatalogItem }) {
   const [qty, setQty] = useState(1);
-  const [modality, setModality] = useState(getDefaultModality(item));
+  const [modality, setModality] = useState<Modality>(getDefaultModality(item));
 
   const preference = item.type === "service" ? `Preferencia: ${modality}. ` : "";
 
@@ -26,14 +31,20 @@ export function ProductDetailClient({ item }: { item: CatalogItem }) {
     return buildWhatsAppUrl(message);
   }, [item.name, item.price, preference, qty]);
 
-  const modalityOptions = useMemo(() => {
+  const modalityOptions = useMemo<Modality[]>(() => {
     if (item.type !== "service") {
-      return [] as string[];
+      return [];
     }
     if (item.modality === "Presencial y videollamada") {
       return ["Presencial", "Videollamada"];
     }
-    return item.modality ? [item.modality] : ["Presencial", "Videollamada"];
+    if (item.modality === "Videollamada") {
+      return ["Videollamada"];
+    }
+    if (item.modality === "Presencial") {
+      return ["Presencial"];
+    }
+    return ["Presencial", "Videollamada"];
   }, [item]);
 
   return (
@@ -82,7 +93,9 @@ export function ProductDetailClient({ item }: { item: CatalogItem }) {
               Modalidad
               <select
                 value={modality}
-                onChange={(event) => setModality(event.target.value)}
+                onChange={(event) =>
+                  setModality(event.target.value as Modality)
+                }
                 className="w-full rounded-full border border-gold/40 bg-transparent px-4 py-2 text-sm text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               >
                 {modalityOptions.map((option) => (
