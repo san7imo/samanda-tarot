@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#282820"/>
+  <rect x="80" y="90" width="640" height="420" fill="#2b1c2f" stroke="#f4c389" stroke-opacity="0.5"/>
+  <text x="110" y="330" font-family="serif" font-size="38" fill="#fcfaed" fill-opacity="0.7">Service placeholder</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#2b1c2f"/>
+  <rect x="90" y="80" width="620" height="300" fill="#fcfaed" fill-opacity="0.08"/>
+  <line x1="110" y1="140" x2="610" y2="140" stroke="#f4c389" stroke-opacity="0.6" stroke-width="6"/>
+  <text x="120" y="300" font-family="serif" font-size="34" fill="#fcfaed" fill-opacity="0.7">Blog placeholder</text>
+</svg>
