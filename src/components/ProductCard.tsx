@@ -17,8 +17,8 @@ export function ProductCard({ item }: ProductCardProps) {
   );
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-gold/20 bg-ivory shadow-[0_18px_40px_-30px_rgba(43,28,47,0.4)]">
-      <div className="relative aspect-[4/3] w-full bg-plum/5">
+    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-gold/70 bg-ivory shadow-[0_18px_40px_-30px_rgba(43,28,47,0.4)]">
+      <div className="relative aspect-4/3 w-full bg-plum/5">
         <Image
           src={item.images[0]}
           alt={item.name}
@@ -29,7 +29,7 @@ export function ProductCard({ item }: ProductCardProps) {
       </div>
       <div className="flex h-full flex-col gap-4 px-6 py-6">
         <div className="space-y-2">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">
+          <p className="text-xs uppercase tracking-[0.3em] text-yellow-700">
             {item.category}
           </p>
           <h3 className="text-xl font-semibold text-plum">

@@ -46,7 +46,7 @@ export function TarotWidget() {
     <div className="rounded-3xl border border-gold/20 bg-plum/95 p-8 text-ivory shadow-[0_24px_50px_-32px_rgba(43,28,47,0.6)]">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <div className="space-y-3">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">Tarot gratis</p>
+          <p className="text-s uppercase tracking-[0.3em] text-gold">Tarot gratis</p>
           <h3 className="text-2xl font-semibold text-ivory">¿Qué necesitas escuchar hoy?</h3>
           <p className="max-w-xl text-sm text-ivory/80">
             Cierra los ojos, respira y pulsa el botón. Recibe un consejo breve para tu momento actual.

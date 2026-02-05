@@ -21,7 +21,7 @@ export function Accordion({ items }: AccordionProps) {
         return (
           <div
             key={item.title}
-            className="rounded-2xl border border-gold/20 bg-ivory/80 px-6 py-4"
+            className="rounded-2xl border border-gold/70 bg-ivory/80 px-6 py-4"
           >
             <button
               type="button"
@@ -32,7 +32,7 @@ export function Accordion({ items }: AccordionProps) {
               <span className="text-base font-semibold text-plum">
                 {item.title}
               </span>
-              <span className="text-gold">{isOpen ? "−" : "+"}</span>
+              <span className="text-yellow-700 ">{isOpen ? "−" : "+"}</span>
             </button>
             {isOpen ? (
               <p className="mt-3 text-sm text-olive/80">{item.content}</p>

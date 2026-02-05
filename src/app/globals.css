@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  background: var(--color-ivory);
+  background-color: #f5f3f3;
   color: var(--color-olive);
   font-family: var(--font-sans);
 }

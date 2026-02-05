@@ -14,10 +14,10 @@ const baseStyles =
   "inline-flex items-center justify-center gap-2 rounded-full border border-transparent px-6 py-3 text-sm font-medium uppercase tracking-[0.16em] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ivory";
 
 const variants: Record<NonNullable<CTAButtonProps["variant"]>, string> = {
-  primary: "bg-gold text-plum shadow-[0_14px_30px_-18px_rgba(244,195,137,0.85)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-18px_rgba(244,195,137,0.75)]",
+  primary: "bg-gold text-yellow-600 shadow-[0_14px_30px_-18px_rgba(244,195,137,0.85)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-18px_rgba(244,195,137,0.75)]",
   secondary:
-    "border-gold/70 text-gold hover:bg-gold/10 hover:-translate-y-0.5",
-  ghost: "text-gold hover:bg-gold/10",
+    "border-gold/70 text-yellow-600 hover:bg-gold/40 hover:-translate-y-0.5",
+  ghost: "text-yellow-600 hover:bg-gold/10",
 };
 
 const sizes: Record<NonNullable<CTAButtonProps["size"]>, string> = {

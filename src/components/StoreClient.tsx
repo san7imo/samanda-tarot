@@ -29,8 +29,8 @@ export function StoreClient() {
 
   return (
     <div className="space-y-8">
-      <div className="grid gap-4 rounded-3xl border border-gold/20 bg-ivory px-6 py-6 md:grid-cols-[1fr_auto] md:items-center">
-        <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.3em] text-olive/70">
+      <div className="grid gap-4 rounded-3xl border border-gold/70 bg-ivory px-6 py-6 md:grid-cols-[1fr_auto] md:items-center">
+        <label className="flex flex-col gap-2 text-s uppercase tracking-[0.3em] text-yellow-700">
           Buscar
           <input
             type="search"
@@ -42,7 +42,7 @@ export function StoreClient() {
           />
         </label>
 
-        <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.3em] text-olive/70">
+        <label className="flex flex-col gap-2 text-xs uppercase tracking-[0.3em] text-yellow-700">
           Categoría
           <select
             value={category}
