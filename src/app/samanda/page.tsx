@@ -9,12 +9,12 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Samanda",
   description:
-    "Conoce la historia, enfoque y valores de Samanda Tarotista Colombiana. Consultas presenciales y online.",
+    "Conoce la historia, enfoque y valores de Samanda Tarot. Consultas presenciales y online.",
   openGraph: {
-    title: "Samanda Tarotista Colombiana",
+    title: "Samanda Tarot",
     description:
-      "Historia, enfoque y valores de Samanda Tarotista Colombiana. Consultas presenciales y online.",
-    url: "https://samandatarotistacolombiana.com/samanda",
+      "Historia, enfoque y valores de Samanda Tarot. Consultas presenciales y online.",
+    url: "https://samandatarot.com/samanda",
   },
 };
 
@@ -65,7 +65,7 @@ const faqItems = [
 
 export default function SamandaPage() {
   const whatsappLink = buildWhatsAppUrl(
-    "Hola Samanda, quiero reservar una lectura personalizada."
+    "Hola Samanda, quiero reservar una consulta personalizada."
   );
 
   return (
@@ -75,7 +75,7 @@ export default function SamandaPage() {
           <div className="relative aspect-3/4 w-full overflow-hidden rounded-4xl border border-gold/20">
             <Image
               src="/images/samanda-portrait-placeholder.svg"
-              alt="Retrato de Samanda Tarotista Colombiana"
+              alt="Retrato de Samanda Tarot"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"
@@ -83,7 +83,7 @@ export default function SamandaPage() {
           </div>
           <div className="space-y-6">
             <p className="text-xs uppercase tracking-[0.4em] text-gold">
-              Samanda - Tarotista Colombiana
+              Samanda Tarot | Guía espiritual
             </p>
             <h1 className="text-4xl font-semibold sm:text-5xl">
               El alma del proyecto
@@ -93,7 +93,7 @@ export default function SamandaPage() {
               videollamada para todo el mundo.
             </p>
             <CTAButton href={whatsappLink} size="lg">
-              Reserva tu lectura
+              Reserva tu consulta
             </CTAButton>
           </div>
         </div>

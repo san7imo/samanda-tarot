@@ -18,7 +18,7 @@ const navItems = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const whatsappLink = buildWhatsAppUrl(
-    "Hola Samanda, quiero información sobre una lectura."
+    "Hola Samanda, quiero información sobre una consulta."
   );
 
   return (
@@ -35,7 +35,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src={Logo}
-            alt="Samanda Tarotista Colombiana"
+            alt="Samanda Tarot"
             width={140}
             height={60}
             className="h-10 w-auto object-contain"
@@ -57,7 +57,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-4 lg:flex">
           <CTAButton href={whatsappLink} size="sm">
-            Reserva tu lectura
+            Reserva tu consulta
           </CTAButton>
         </div>
 
@@ -86,7 +86,7 @@ export function Navbar() {
               </Link>
             ))}
             <CTAButton href={whatsappLink} size="sm" className="w-fit">
-              Reserva tu lectura
+              Reserva tu consulta
             </CTAButton>
             <div className="pt-4 text-xs uppercase tracking-[0.3em] text-ivory/60">
               <p>Madrid + videollamada</p>

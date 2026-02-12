@@ -49,3 +49,24 @@ h6 {
 .fade-in {
   animation: fadeIn 0.4s ease;
 }
+
+@keyframes heroImageBlink {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 0.34;
+  }
+}
+
+.hero-image-pulse {
+  animation: heroImageBlink 5.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-pulse {
+    animation: none;
+    opacity: 0.92;
+  }
+}

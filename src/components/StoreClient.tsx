@@ -6,7 +6,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { catalog } from "@/data/catalog";
 
 const categoryOptions = (() => {
-  const order = ["Servicios", "Amuletos", "Velas", "Rituales"] as const;
+  const order = ["Consultas", "Tratamientos", "Amuletos"] as const;
   const list = order.filter((value) =>
     catalog.some((item) => item.category === value)
   );
@@ -38,7 +38,7 @@ export function StoreClient() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             className="rounded-full border border-gold/40 bg-transparent px-4 py-2 text-sm text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-            aria-label="Buscar productos o servicios"
+            aria-label="Buscar productos, consultas o tratamientos"
           />
         </label>
 

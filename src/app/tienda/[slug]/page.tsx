@@ -31,7 +31,7 @@ export function generateMetadata({
     openGraph: {
       title: item.name,
       description: item.shortDesc,
-      url: `https://samandatarotistacolombiana.com/tienda/${item.slug}`,
+      url: `https://samandatarot.com/tienda/${item.slug}`,
     },
   };
 }

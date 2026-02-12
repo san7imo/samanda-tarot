@@ -7,18 +7,18 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Contacta con Samanda Tarotista Colombiana para agendar lecturas presenciales o por videollamada.",
+    "Contacta con Samanda Tarot para agendar consultas presenciales o por videollamada.",
   openGraph: {
-    title: "Contacto | Samanda Tarotista Colombiana",
+    title: "Contacto | Samanda Tarot",
     description:
-      "Contacta con Samanda Tarotista Colombiana para agendar lecturas presenciales o por videollamada.",
-    url: "https://samandatarotistacolombiana.com/contacto",
+      "Contacta con Samanda Tarot para agendar consultas presenciales o por videollamada.",
+    url: "https://samandatarot.com/contacto",
   },
 };
 
 export default function ContactoPage() {
   const whatsappLink = buildWhatsAppUrl(
-    "Hola Samanda, quiero reservar una lectura o servicio."
+    "Hola Samanda, quiero reservar una consulta o tratamiento."
   );
 
   return (
@@ -69,7 +69,7 @@ export default function ContactoPage() {
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Lectura, ritual, amuleto..."
+                  placeholder="Consulta, tratamiento, amuleto..."
                   className="rounded-full border border-gold/40 bg-transparent px-4 py-3 text-sm text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                 />
               </label>
@@ -112,10 +112,10 @@ export default function ContactoPage() {
                 <p>
                   Email:{" "}
                   <a
-                    href="mailto:contacto@samandatarotistacolombiana.com"
+                    href="mailto:contacto@samandatarot.com"
                     className="text-plum hover:text-yellow-700"
                   >
-                    contacto@samandatarotistacolombiana.com
+                    contacto@samandatarot.com
                   </a>
                 </p>
                 <p>Horario: Lunes a domingo, 10:00 - 21:30 (placeholder)</p>

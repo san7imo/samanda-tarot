@@ -21,17 +21,17 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://samandatarot.com"),
   title: {
-    default: "Samanda Tarotista Colombiana",
-    template: "%s | Samanda Tarotista Colombiana",
+    default: "Samanda Tarot",
+    template: "%s | Samanda Tarot",
   },
   description:
-    "Tarotista colombiana en Madrid: lecturas presenciales y por videollamada, rituales y amuletos con enfoque espiritual premium.",
+    "Consultas de tarot (cartas medievales), lectura de cera de velas, interpretación de sueños, tratamientos energéticos y amuletos ritualizados.",
   openGraph: {
-    title: "Samanda Tarotista Colombiana",
+    title: "Samanda Tarot",
     description:
-      "Tarotista colombiana en Madrid: lecturas presenciales y por videollamada, rituales y amuletos con enfoque espiritual premium.",
+      "Consultas de tarot (cartas medievales), lectura de cera de velas, interpretación de sueños, tratamientos energéticos y amuletos ritualizados.",
     url: "https://samandatarot.com",
-    siteName: "Samanda Tarotista Colombiana",
+    siteName: "Samanda Tarot",
     locale: "es_ES",
     type: "website",
   },

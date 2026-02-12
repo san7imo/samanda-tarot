@@ -7,18 +7,20 @@ import { CTAButton } from "@/components/CTAButton";
 import { TarotWidget } from "@/components/TarotWidget";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ProductCard } from "@/components/ProductCard";
+import { CandleCarousel } from "@/components/CandleCarousel";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-import { featuredAmulets, primaryServices } from "@/data/catalog";
+import { formatPrice } from "@/lib/format";
+import { catalog, featuredAmulets, primaryServices } from "@/data/catalog";
 
 export const metadata: Metadata = {
   title: "Tarot en Madrid y videollamada",
   description:
-    "Lecturas de tarot premium, rituales energéticos y amuletos consagrados. Atención presencial en Madrid y videollamada.",
+    "Consultas de tarot (cartas medievales), lectura de cera de velas, interpretación de sueños, tratamientos energéticos y amuletos ritualizados.",
   openGraph: {
-    title: "Samanda Tarotista Colombiana",
+    title: "Samanda Tarot",
     description:
-      "Lecturas de tarot premium, rituales energéticos y amuletos consagrados. Atención presencial en Madrid y videollamada.",
-    url: "https://samandatarotistacolombiana.com",
+      "Consultas de tarot (cartas medievales), lectura de cera de velas, interpretación de sueños, tratamientos energéticos y amuletos ritualizados.",
+    url: "https://samandatarot.com",
   },
 };
 
@@ -52,29 +54,6 @@ const intentions = [
         <path d="M12 2a10 10 0 0 0-7.1 17.1A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-5.7-2.4A8 8 0 1 1 12 20zm0-13a5 5 0 0 0-4.1 7.8l-1.3 3.7 3.7-1.3A5 5 0 1 0 12 7zm0 2a3 3 0 0 1 1.9 5.3l-.3.2-1.6.6.6-1.6-.2-.3A3 3 0 0 1 12 9z" />
       </svg>
     ),
-  },
-];
-
-const rituals = [
-  {
-    ritual: "Lectura de Velas",
-    purpose: "Análisis de la llama y la cera.",
-    result: "Entender bloqueos ocultos y mensajes del entorno.",
-  },
-  {
-    ritual: "Endulzamiento",
-    purpose: "Suavizar asperezas en relaciones.",
-    result: "Recuperar la armonía y la apertura emocional con otros.",
-  },
-  {
-    ritual: "Baños de Purificación",
-    purpose: "Descarga energética profunda.",
-    result: "Sentirte ligera, renovada y con el aura \"limpia\".",
-  },
-  {
-    ritual: "Limpieza Espiritual",
-    purpose: "Eliminación de energías densas.",
-    result: "Recuperar la paz en tu hogar o en tu estado de ánimo.",
   },
 ];
 
@@ -123,24 +102,82 @@ const blogPosts = [
   },
 ];
 
+const candleGuideImage = "/images/velas/Pergamino - Samanda Tarot - A4 Cara  A.png";
+const candleBoxImage = "/images/velas/Etiqueta de la caja - Samanda Tarot.png";
+
+const candleDayLabels = [
+  {
+    day: "Lunes",
+    intention: "Calma",
+    image: "/images/velas/Etiquetas de las velas - Samanda Tarot_Lunes - calma.png",
+  },
+  {
+    day: "Martes",
+    intention: "Vitalidad",
+    image: "/images/velas/Etiquetas de las velas - Samanda Tarot_Martes - vitalidad.png",
+  },
+  {
+    day: "Miércoles",
+    intention: "Verdad",
+    image: "/images/velas/Etiquetas de las velas - Samanda Tarot_Miercoles - verdad.png",
+  },
+  {
+    day: "Jueves",
+    intention: "Fortuna",
+    image: "/images/velas/Etiquetas de las velas - Samanda Tarot_Jueves - fortuna.png",
+  },
+  {
+    day: "Viernes",
+    intention: "Pasión",
+    image: "/images/velas/Etiquetas de las velas - Samanda Tarot_Viernes - pasion.png",
+  },
+  {
+    day: "Sábado",
+    intention: "Amor",
+    image: "/images/velas/Etiquetas de las velas - Samanda Tarot_Sabado - amor.png",
+  },
+];
+
+const candleCarouselSlides = [
+  {
+    src: "/images/velas/Etiquetas velas mockup.png",
+    alt: "Mockup del set de velas ritualizadas",
+  },
+  {
+    src: "/images/velas/pergamino.png",
+    alt: "Pergamino resumen del set de velas",
+  },
+  {
+    src: "/images/velas/samanda-velas-01.jpg",
+    alt: "Set de velas Samanda Tarot vista 1",
+  },
+  {
+    src: "/images/velas/samanda-velas-03.jpg",
+    alt: "Set de velas Samanda Tarot vista 2",
+  },
+];
+
 export default function HomePage() {
   const whatsappGeneral = buildWhatsAppUrl(
-    "Hola Samanda, quiero información sobre una lectura."
-  );
-  const whatsappRitual = buildWhatsAppUrl(
-    "Hola Samanda, no sé cuál ritual elegir. ¿Me asesoras?"
-  );
-  const whatsappRitualRequest = buildWhatsAppUrl(
-    "Hola Samanda, quiero solicitar mi ritual."
+    "Hola Samanda, quiero información sobre una consulta."
   );
   const whatsappPresencial = buildWhatsAppUrl(
     "Hola Samanda, quiero reservar mi sesión presencial de tarot en Madrid."
+  );
+  const candlePack = catalog.find((item) => item.slug === "pack-velones");
+  const candlePackName = candlePack?.name ?? "Pack de velones";
+  const candlePackPrice = candlePack
+    ? formatPrice(candlePack.price, candlePack.currency)
+    : "Consultar precio";
+  const candlePackLink = candlePack ? `/tienda/${candlePack.slug}` : "/tienda";
+  const candlePackWhatsapp = buildWhatsAppUrl(
+    `Hola Samanda, quiero comprar ${candlePackName}.`
   );
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Samanda Tarotista Colombiana",
+    name: "Samanda Tarot",
     address: {
       "@type": "PostalAddress",
       streetAddress: "P.º de Sta. María de la Cabeza, 4, 28045 Madrid (bajo izquierda)",
@@ -148,7 +185,7 @@ export default function HomePage() {
       addressCountry: "ES",
     },
     telephone: "+34 91 539 58 50",
-    url: "https://samandatarotistacolombiana.com",
+    url: "https://samandatarot.com",
   };
 
   return (
@@ -160,50 +197,63 @@ export default function HomePage() {
 
       <Section
         id="hero"
-        className="bg-[radial-gradient(120%_120%_at_10%_0%,rgba(244,195,137,0.18),transparent_60%),linear-gradient(180deg,#2b1c2f_0%,#1b131f_100%)] text-ivory"
+        className="relative overflow-hidden text-ivory"
         ariaLabel="Hero Samanda Tarot"
       >
-        <div className="relative overflow-hidden rounded-[40px] border border-gold/20 bg-plum/40 px-8 py-12 sm:px-10 lg:px-14">
+        <div className="pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2">
           <video
-            className="absolute inset-0 h-full w-full object-cover opacity-35"
+            className="h-full w-full object-cover"
             autoPlay
             muted
             loop
             playsInline
             poster="/images/hero-placeholder.svg"
           >
-            <source src="/videos/hero-smoke.mp4" type="video/mp4" />
+            <source src="/videos/videotarot.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-plum/55" aria-hidden="true" />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,16,31,0.64)_0%,rgba(26,16,31,0.72)_100%)]"
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="relative overflow-hidden rounded-[40px] bg-[linear-gradient(120deg,rgba(43,28,47,0.24)_0%,rgba(43,28,47,0.08)_52%,rgba(43,28,47,0.02)_100%)] px-8 py-12 sm:px-10 lg:px-14">
 
           <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="space-y-6">
+            <div
+              className="space-y-6 rounded-3xl bg-transparent p-6 backdrop-blur-[2px] sm:p-7"
+              style={{
+                backgroundImage:
+                  "linear-gradient(130deg, rgba(14,9,18,0.34) 0%, rgba(14,9,18,0.14) 55%, rgba(14,9,18,0.02) 100%), radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)",
+                backgroundSize: "auto, 4px 4px",
+              }}
+            >
               <p className="text-xs uppercase tracking-[0.4em] text-gold">
-                Tarotista colombiana en Madrid
+                Samanda Tarot en Madrid
               </p>
               <h1 className="text-4xl font-semibold leading-tight sm:text-5xl">
                 Tu destino no está escrito en piedra, está escrito en tu energía
               </h1>
               <p className="max-w-xl text-base text-ivory/80">
-                ¡Desbloquea tu camino hoy! Tarot medieval, guía espiritual y claridad real para amor, trabajo y camino
-                personal. Atención presencial y por videollamada.
+                Consultas de tarot (cartas medievales), lectura de cera de velas e interpretación de sueños. Tratamientos
+                energéticos y amuletos ritualizados para amor, trabajo y camino personal.
               </p>
               <div className="flex flex-wrap gap-4">
                 <CTAButton href={whatsappGeneral} size="lg">
-                  Reserva tu Lectura
+                  Reserva tu consulta
                 </CTAButton>
                 <CTAButton href="#servicios" variant="secondary" size="lg">
-                  Ver servicios
+                  Ver la lista
                 </CTAButton>
               </div>
             </div>
-            <div className="relative aspect-4/3 w-full overflow-hidden rounded-[36px] border border-gold/20">
+            <div className="relative aspect-square w-full max-w-[220px] justify-self-center overflow-hidden sm:max-w-[270px] lg:max-w-[320px]">
               <Image
-                src="/images/hero-placeholder.svg"
-                alt="Lectura de tarot premium"
+                src="/images/logo/Samanda Tarot - Logo Principal.png"
+                alt="Consulta de tarot"
                 fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
+                sizes="(min-width: 1024px) 320px, (min-width: 640px) 270px, 220px"
+                className="hero-image-pulse object-contain"
                 priority
               />
             </div>
@@ -215,15 +265,14 @@ export default function HomePage() {
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] ">
           <div className="space-y-4 ">
             <p className="text-xs uppercase tracking-[0.4em] text-yellow-700">
-              Samanda | Tarot y Guía Espiritual
+              Samanda Tarot | Guía espiritual
             </p>
             <h2 className="text-3xl font-semibold text-plum">
               Transformemos juntos la incertidumbre en paz
             </h2>
             <p className="text-sm text-olive/80">
-              Soy Samanda, tarotista colombiana dedicada a iluminar tu camino. Ya sea en mi consulta presencial en
-              Madrid o mediante videollamada, trabajaremos para despejar tus dudas y encontrar las respuestas que tu
-              futuro reserva para ti.
+              Soy Samanda, guía espiritual dedicada a iluminar tu camino. Ya sea en consulta presencial en Madrid o
+              mediante videollamada, trabajaremos para despejar tus dudas y encontrar respuestas claras.
             </p>
           </div>
           <div className="rounded-3xl border border-gold/70 bg-ivory px-6 py-6 text-sm text-olive/80">
@@ -263,65 +312,118 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <section className="bg-gold/40 px-6 py-6 text-center sm:px-10 lg:px-16">
-        <div className="mx-auto w-full max-w-6xl">
-          <p className="text-xs uppercase tracking-[0.4em] text-plum">
-            <a href="/tv" className="hover:text-plum/70">
-              Iberoamérica TV - todos los días 20:30 (hora española)
-            </a>
-          </p>
-        </div>
-      </section>
-
       <Section ariaLabel="Tarot gratis">
         <TarotWidget />
       </Section>
 
-      <Section id="servicios" ariaLabel="Servicios principales">
-        <div className="space-y-8">
+      <Section id="servicios" ariaLabel="La lista de Samanda">
+        <div className="space-y-10">
           <div className="flex flex-col gap-3">
-            <p className="text-s uppercase tracking-[0.7em] text-yellow-700">Servicios principales</p>
+            <p className="text-s uppercase tracking-[0.7em] text-yellow-700">La lista de Samanda</p>
             <h2 className="text-3xl font-semibold text-plum">
-              Lecturas y rituales para guiar tu camino
+              Consultas, tratamientos y amuletos
             </h2>
+            <p className="text-sm text-olive/80">
+              Aquí encuentras las consultas, tratamientos y productos ritualizados que trabajo en Samanda Tarot.
+            </p>
           </div>
-          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="rounded-3xl border border-gold/70 bg-ivory px-8 py-8 shadow-[0_18px_40px_-32px_rgba(43,28,47,0.35)]">
-              <p className="text-s uppercase tracking-[0.4em] text-yellow-700">
-                Lectura del Tarot Presencial en Madrid
+
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-3xl border border-gold/70 bg-ivory px-6 py-6 shadow-[0_18px_40px_-32px_rgba(43,28,47,0.35)]">
+              <p className="text-xs uppercase tracking-[0.3em] text-yellow-700">Consultas</p>
+              <ul className="mt-4 space-y-2 text-sm text-olive/80">
+                <li>Consultas de tarot (cartas medievales) y la cera de las velas.</li>
+                <li>Interpretación de sueños.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-3xl border border-gold/70 bg-ivory px-6 py-6 shadow-[0_18px_40px_-32px_rgba(43,28,47,0.35)]">
+              <p className="text-xs uppercase tracking-[0.3em] text-yellow-700">Tratamientos para</p>
+              <ul className="mt-4 space-y-2 text-sm text-olive/80">
+                <li>Atraer el amor.</li>
+                <li>Arreglar la mala suerte.</li>
+                <li>Arreglar el negocio/trabajos.</li>
+                <li>Arreglar hogares.</li>
+                <li>Quitar la mala energía (arreglar y atraer tu energía positiva).</li>
+                <li>Quitar mal de ojos.</li>
+                <li>Quitar hechizos.</li>
+                <li>Quitar maleficios.</li>
+              </ul>
+              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-yellow-700">
+                Qué hace Samanda con la curación de eso
               </p>
-              <h3 className="mt-4 text-2xl font-semibold text-plum italic">
-                Una sesión honesta para entender tu presente y diseñar tu futuro
-              </h3>
-              <p className="mt-4 text-sm text-olive/80">
-                No es adivinación, es una hoja de ruta. Nos sentamos frente a frente en mi espacio en Madrid para
-                desgranar tus dudas sobre amor, trabajo o propósito con total transparencia.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <CTAButton href={whatsappPresencial} size="sm">
-                  Reservar mi sesión presencial
-                </CTAButton>
-              </div>
-              <p className="mt-5 text-xs uppercase tracking-[0.25em] text-olive/60">
-                Aviso: Mis servicios son un acompañamiento espiritual; no sustituyen tratamientos médicos o psicológicos
-                profesionalizados
+              <ul className="mt-3 space-y-2 text-sm text-olive/80">
+                <li>Limpieza energética profunda.</li>
+                <li>Desbloqueo sentimental.</li>
+                <li>Escudo de protección.</li>
+                <li>Armonización de espacios.</li>
+                <li>Sanación familiar.</li>
+                <li>Arreglar y quitar enfermedades desconocidas.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-3xl border border-gold/70 bg-ivory px-6 py-6 shadow-[0_18px_40px_-32px_rgba(43,28,47,0.35)]">
+              <p className="text-xs uppercase tracking-[0.3em] text-yellow-700">Productos (Amuletos)</p>
+              <ul className="mt-4 space-y-2 text-sm text-olive/80">
+                <li>
+                  Sábila o aloe vera, para purificar el hogar o el negocio, sacar malas energías, malas influencias.
+                </li>
+                <li>
+                  Bambú, para atraer el dinero y asegurar la estabilidad emocional, el amor y la economía.
+                </li>
+                <li>
+                  Perfumes, para el amor, desbloquear y abrir caminos para el futuro en lo sentimental y en lo
+                  económico.
+                </li>
+                <li>
+                  Yemayá, la diosa del mar y del amor, para que tu pareja siempre te sea fiel y constante.
+                </li>
+                <li>
+                  Jabones, especialmente el azul para limpiezas esotéricas, limpiezas astrológicas, atrae todo lo
+                  positivo.
+                </li>
+                <li>
+                  Pulsera de los 7 nudos (hechas a mano), te protege de las malas energías y del mal de ojo.
+                </li>
+                <li>
+                  La bolsa de los 7 granos, para que nunca falte alimentos, salud y amor en tu casa (protección
+                  general).
+                </li>
+                <li>
+                  Aceite de romero, untarlo en la planta de los pies en la noche al acostarse y colocarse unos
+                  calcetines blancos, para evitar que entren malas influencias y malas energías al cuerpo.
+                </li>
+                <li>
+                  Los cuarzos, se deben llevar dentro de la cartera para que siempre tengas dinero.
+                </li>
+                <li>
+                  Rosarios: es el mejor talismán del mundo, bautizados y magnetizados con tu nombre.
+                </li>
+                <li>
+                  Pack de velones, en tu hogar nunca puede faltar todo esto para que tengan una vida próspera y feliz.
+                </li>
+              </ul>
+              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-olive/70">
+                Estos amuletos tienen que estar preparados, ritualizados y magnetizados por Samanda.
               </p>
             </div>
-            <div className="relative aspect-4/3 w-full overflow-hidden rounded-3xl border border-gold/20">
-              <Image
-                src="/images/service-placeholder.svg"
-                alt="Sesión presencial de tarot"
-                fill
-                sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </div>
           </div>
+
           <div className="grid gap-6 lg:grid-cols-3">
             {primaryServices.map((service) => (
               <ServiceCard key={service.id} item={service} />
             ))}
           </div>
+
+          <div className="flex flex-wrap gap-3">
+            <CTAButton href={whatsappGeneral} size="sm">
+              Consultar por WhatsApp
+            </CTAButton>
+            <CTAButton href={whatsappPresencial} variant="secondary" size="sm">
+              Reserva presencial
+            </CTAButton>
+          </div>
+
           <p className="text-xs uppercase tracking-[0.25em] text-olive/60">
             Aviso: Mis servicios son un acompañamiento espiritual; no sustituyen tratamientos médicos o psicológicos
             profesionalizados
@@ -329,58 +431,78 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section ariaLabel="Rituales energéticos">
-        <div className="rounded-3xl border border-gold/70 bg-ivory px-6 py-8">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <p className="text-s uppercase tracking-[0.4em] text-yellow-700">Rituales energéticos</p>
-              <h2 className="text-3xl font-semibold text-plum">Encuentra el ritual ideal</h2>
-              <p className="mt-3 text-sm text-olive/80">
-                Encuentra los diferentes rituales que te ofrezco: lectura de velas, endulzamiento, baños de purificación
-                y limpieza espiritual. Elige el que más resuene contigo.
+      <Section ariaLabel="Producto estrella velas" className="bg-[#c0a180]">
+        <div className="space-y-10">
+          <div className="mx-auto w-full max-w-[1040px]">
+            <Image
+              src={candleGuideImage}
+              alt="Pergamino con explicación del set de velas Samanda Tarot"
+              width={1241}
+              height={1754}
+              sizes="(min-width: 1280px) 1040px, (min-width: 768px) 88vw, 98vw"
+              className="h-auto w-full"
+            />
+          </div>
+
+          <div className="grid justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {candleDayLabels.map((label) => (
+              <div
+                key={label.image}
+                className="w-full origin-center transition-transform duration-300 will-change-transform hover:scale-110"
+              >
+                <div className="relative aspect-[443/544] w-full">
+                  <Image
+                    src={label.image}
+                    alt={`Etiqueta ${label.day} - ${label.intention}`}
+                    fill
+                    sizes="(min-width: 1280px) 30vw, (min-width: 1024px) 31vw, (min-width: 640px) 46vw, 94vw"
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mx-auto w-full max-w-[920px]">
+            <Image
+              src={candleBoxImage}
+              alt="Etiqueta de la caja del set de velas Samanda Tarot"
+              width={1700}
+              height={1045}
+              sizes="(min-width: 1280px) 920px, (min-width: 768px) 86vw, 98vw"
+              className="h-auto w-full"
+            />
+          </div>
+
+          <article className="grid gap-6 rounded-3xl border border-gold/70 bg-ivory px-5 py-6 shadow-[0_20px_44px_-30px_rgba(43,28,47,0.4)] lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-8">
+            <CandleCarousel slides={candleCarouselSlides} />
+
+            <div className="flex flex-col gap-4 rounded-2xl border border-gold/35 bg-gold/10 px-5 py-5">
+              <p className="text-xs uppercase tracking-[0.28em] text-yellow-700">Compra del producto</p>
+              <h3 className="text-2xl font-semibold text-plum">{candlePackName}</h3>
+              <p className="text-sm text-olive/80">
+                Incluye presentación del set, guía ritual y velas organizadas por energía semanal para mantener tu
+                práctica clara y constante.
               </p>
+              <p className="text-2xl font-semibold text-plum">{candlePackPrice}</p>
+              <div className="flex flex-wrap gap-3">
+                <CTAButton href={candlePackLink} variant="secondary" size="sm">
+                  Ver en tienda
+                </CTAButton>
+                <CTAButton href={candlePackWhatsapp} size="sm">
+                  Comprar por WhatsApp
+                </CTAButton>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <CTAButton href={whatsappRitual} variant="secondary" size="sm">
-                No sé cuál elegir
-              </CTAButton>
-              <CTAButton href={whatsappRitualRequest} size="md">
-                Solicitar mi ritual
-              </CTAButton>
-            </div>
-          </div>
-          <div className="mt-6 overflow-x-auto">
-            <table className="w-full min-w-130 border-collapse text-left text-sm">
-              <thead>
-                <tr className="border-b border-gold/20 text-xs uppercase tracking-[0.3em] text-olive/70">
-                  <th className="py-3">Ritual</th>
-                  <th className="py-3">¿Para qué sirve?</th>
-                  <th className="py-3">Resultado esperado</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rituals.map((ritual) => (
-                  <tr key={ritual.ritual} className="border-b border-gold/10">
-                    <td className="py-4 font-semibold text-plum">{ritual.ritual}</td>
-                    <td className="py-4 text-olive/80">{ritual.purpose}</td>
-                    <td className="py-4 text-olive/80">{ritual.result}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-6 text-xs uppercase tracking-[0.25em] text-olive/60">
-            Aviso: Mis servicios son un acompañamiento espiritual; no sustituyen tratamientos médicos o psicológicos
-            profesionalizados
-          </p>
+          </article>
         </div>
       </Section>
 
       <Section ariaLabel="Amuletos destacados">
         <div className="space-y-6">
           <div className="flex flex-col gap-3">
-            <p className="text-xs uppercase tracking-[0.4em] text-yellow-700">Amuletos destacados</p>
-            <h2 className="text-3xl font-semibold text-plum">Piezas consagradas para tu protección</h2>
+            <p className="text-xs uppercase tracking-[0.4em] text-yellow-700">Amuletos ritualizados</p>
+            <h2 className="text-3xl font-semibold text-plum">Piezas preparadas para tu protección</h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-4">
             {featuredAmulets.map((item) => (

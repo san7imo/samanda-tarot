@@ -2,7 +2,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function WhatsAppButton() {
   const whatsappLink = buildWhatsAppUrl(
-    "Hola Samanda, quiero información sobre una lectura."
+    "Hola Samanda, quiero información sobre una consulta."
   );
 
   return (

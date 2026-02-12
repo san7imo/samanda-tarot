@@ -27,7 +27,7 @@ export function ServiceCard({ item }: ServiceCardProps) {
       </div>
       <div className="flex h-full flex-col gap-4 px-6 py-6">
         <div className="space-y-2">
-          <p className="text-xs uppercase tracking-[0.3em] text-yellow-700">Servicio</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-yellow-700">{item.category}</p>
           <h3 className="text-xl font-semibold text-plum">{item.name}</h3>
           <p className="text-sm text-olive/80">{item.shortDesc}</p>
         </div>

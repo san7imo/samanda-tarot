@@ -51,12 +51,9 @@ export function TarotWidget() {
           <p className="max-w-xl text-sm text-ivory/80">
             Cierra los ojos, respira y pulsa el botón. Recibe un consejo breve para tu momento actual.
           </p>
-          <a
-            href="/tv"
-            className="inline-flex text-xs uppercase tracking-[0.3em] text-gold/80 hover:text-gold"
-          >
-            Iberoamérica TV - acceso al programa de Samanda (placeholder)
-          </a>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold/80">
+            Tarot medieval y lectura de cera de velas
+          </p>
         </div>
         <button
           type="button"
@@ -78,7 +75,7 @@ export function TarotWidget() {
           </p>
         </div>
         <div className="flex flex-col items-start justify-start gap-3 lg:items-end lg:justify-center">
-          <p className="text-sm text-ivory/80">¿Quieres profundizar en tu lectura?</p>
+          <p className="text-sm text-ivory/80">¿Quieres profundizar en tu consulta?</p>
           <CTAButton href={whatsappLink} size="sm">
             Reserva una consulta
           </CTAButton>
